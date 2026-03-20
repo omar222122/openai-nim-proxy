@@ -28,7 +28,8 @@ const MODEL_MAPPING = {
   'gpt-4o': 'deepseek-ai/deepseek-v3.2',
   'claude-3-opus': 'openai/gpt-oss-120b',
   'claude-3-sonnet': 'openai/gpt-oss-20b',
-  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking' 
+  'gemini-pro': 'qwen/qwen3-next-80b-a3b-thinking'
+  'glm-5': 'z-ai/glm5'
 };
 
 // Health check endpoint
@@ -97,7 +98,7 @@ app.post('/v1/chat/completions', async (req, res) => {
       messages: messages,
       temperature: temperature || 0.6,
       max_tokens: max_tokens || 9024,
-      extra_body: ENABLE_THINKING_MODE ? { chat_template_kwargs: { thinking: true } } : undefined,
+      extra_body: ENABLE_THINKING_MODE ? { chat_template_kwargs: { enable_thinking: true, clear_thinking: false } } : undefined,
       stream: stream || false
     };
     
