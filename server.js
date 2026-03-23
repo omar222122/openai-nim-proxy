@@ -55,14 +55,14 @@ app.post('/v1/chat/completions', async (req, res) => {
       }
     }
 
-    const nimRequest = {
-      model: nimModel,
-      messages: messages,
-      temperature: temperature || 0.6,
-      max_tokens: max_tokens || 32000,
-      extra_body: ENABLE_THINKING_MODE ? { chat_template_kwargs: { enable_thinking: true, clear_thinking: false } } : undefined,
-      stream: stream || false
-    };
+const nimRequest = {
+  model: nimModel,
+  messages: messages,
+  temperature: temperature || 0.6,
+  max_tokens: max_tokens || 32000,
+  chat_template_kwargs: ENABLE_THINKING_MODE ? { enable_thinking: true, clear_thinking: false } : undefined,
+  stream: stream || false
+};
 
     const response = await axios.post(`${NIM_API_BASE}/chat/completions`, nimRequest, {
       headers: {
