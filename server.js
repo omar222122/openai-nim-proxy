@@ -70,6 +70,7 @@ const nimRequest = {
         'Content-Type': 'application/json'
       },
       responseType: stream ? 'stream' : 'json'
+      timeout: 300000
     });
 
     if (stream) {
